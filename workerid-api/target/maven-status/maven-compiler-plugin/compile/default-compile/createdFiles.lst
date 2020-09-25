@@ -1,0 +1,6 @@
+com/cfc/common/workerid/api/TransOutput.class
+com/cfc/common/workerid/api/WorkerNodeType.class
+com/cfc/common/workerid/api/GetWorkerIdResponse.class
+com/cfc/common/workerid/api/GetWorkerIdRequest.class
+com/cfc/common/workerid/api/TransInput.class
+com/cfc/common/workerid/api/ValuedEnum.class
