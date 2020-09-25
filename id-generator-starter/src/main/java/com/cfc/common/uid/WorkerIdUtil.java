@@ -41,5 +41,6 @@ public class WorkerIdUtil {
 //
 //        String message = okHttpCli.doPostJson("http://127.0.0.1:11111/api/workerId/getWorkerId", "{}");
 
+        return "";
     }
 }
