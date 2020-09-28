@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <!-- mysql驱动绝对路径 -->
+    <classPathEntry location="/Users/admin/Documents/maven/repository/mysql/mysql-connector-java/5.1.45/mysql-connector-java-5.1.45.jar" />
+
+    <context id="context" defaultModelType="flat" targetRuntime="MyBatis3">
+        <property name="javaFileEncoding" value="UTF-8" />
+<!--        <plugin type="com.finup.mybatisgenerator.SelectByEntityPlugin">-->
+<!--        </plugin>-->
+
+<!--        <commentGenerator type="com.finup.mybatisgenerator.AccountCommentGenerator">-->
+<!--            <property name="commentEncoding" value="UTF-8" />-->
+<!--        </commentGenerator>-->
+
+        <!-- 连接数据库配置 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/my_db" userId="root" password="root"  />
+
+        <!--生成model配置-->
+        <javaModelGenerator targetPackage="com.cfc.common.workerid.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!--生成mapper.xml配置-->
+        <sqlMapGenerator targetPackage="META-INF.mappers" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!--生成mapper.java配置，此配置会覆盖掉非自动生成的部分，所以在二次通过此配置生成时注意注释此项配置 by liuhai on 20170827-->
+        <javaClientGenerator targetPackage="com.cfc.common.workerid.dao" targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!-- 配置要生成的表 生成哪张表数据就放款哪张表的注释!-->
+        <table tableName="WORKER_NODE"
+               enableCountByExample="false" enableDeleteByPrimaryKey="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               enableUpdateByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="JDBC" />
+        </table>
+    </context>
+</generatorConfiguration>

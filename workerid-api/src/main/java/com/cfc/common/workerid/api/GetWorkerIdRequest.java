@@ -20,25 +20,13 @@ public class GetWorkerIdRequest {
      */
     @ApiModelProperty(notes = "服务器地址", required = true)
     @NotBlank(message = "服务器地址不能为空")
-    private String hostName;
+    private String ip;
 
     /**
      * 服务器端口
      */
     @ApiModelProperty(notes = "服务器端口", required = true)
-    @NotBlank(message = "服务器端口不能为空")
-    private String port;
+    @NotNull(message = "服务器端口不能为空")
+    private Short port;
 
-    /**
-     * 服务器类型
-     */
-    @ApiModelProperty(notes = "服务器类型", required = true)
-    @NotNull(message = "服务器类型不能为空")
-    private WorkerNodeType type;
-
-    /**
-     * 请求时间
-     */
-    @ApiModelProperty(notes = "请求时间")
-    private Date launchDate = new Date();
 }

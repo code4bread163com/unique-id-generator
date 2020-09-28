@@ -8,8 +8,8 @@ import com.cfc.common.workerid.api.GetWorkerIdResponse;
 import com.cfc.common.workerid.api.TransInput;
 import com.cfc.common.workerid.api.TransOutput;
 import com.cfc.common.workerid.core.DisposableWorkerIdAssigner;
-import com.cfc.common.workerid.dao.WorkerNodeDAO;
-import com.cfc.common.workerid.util.ValidatorUtil;
+import com.cfc.common.workerid.dao.WorkerNodeMapper;
+import com.cfc.common.workerid.utils.ValidatorUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -37,15 +37,10 @@ import org.springframework.web.bind.annotation.RestController;
 @TransOutputAnnotation
 public class WorkerIdController {
 
-    private final WorkerNodeDAO WorkerNodeDAO;
+
 
     @Autowired
     private DisposableWorkerIdAssigner disposableWorkerIdAssigner;
-
-    public WorkerIdController(WorkerNodeDAO workerNodeDAO) {
-        this.WorkerNodeDAO = workerNodeDAO;
-    }
-
 
     /**
      * 获取workerID
@@ -53,13 +48,13 @@ public class WorkerIdController {
      * @param request
      * @return
      */
-    @MonitorAnnotation(name = "查询客户账户余额，用于将多充值的溢缴款提现")
+    @MonitorAnnotation(name = "获取workerID")
     @RequestMapping(value = "getWorkerId", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     @ResponseStatus(value = HttpStatus.OK)
     @ApiOperation(value = "获取workerID", notes = "获取workerID", httpMethod = "POST")
     public TransOutput<GetWorkerIdResponse> getWorkerId(
-            //@ApiParam(name = "request", required = true, value = "获取workerID入参")
+            @ApiParam(name = "request", required = true, value = "获取workerID入参")
             @RequestBody TransInput<GetWorkerIdRequest> request) {
 
         ValidatorUtil.validateBasicAndBusiParam(request);
@@ -69,7 +64,6 @@ public class WorkerIdController {
         return new TransOutput<>(ErrorCodeEnum.SUCCESS.getCode(), ErrorCodeEnum.SUCCESS.getText(),
                 new GetWorkerIdResponse());
     }
-
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     @ResponseBody

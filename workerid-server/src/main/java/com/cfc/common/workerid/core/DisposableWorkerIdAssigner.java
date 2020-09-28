@@ -1,10 +1,9 @@
 package com.cfc.common.workerid.core;
 
 import com.cfc.common.workerid.api.WorkerNodeType;
-import com.cfc.common.workerid.dao.WorkerNodeDAO;
-import com.cfc.common.workerid.model.WorkerNodeEntity;
-import com.cfc.common.workerid.util.DockerUtils;
-import com.cfc.common.workerid.util.NetUtils;
+import com.cfc.common.workerid.model.WorkerNode;
+import com.cfc.common.workerid.utils.DockerUtils;
+import com.cfc.common.workerid.utils.NetUtils;
 import org.apache.commons.lang.math.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,35 +22,19 @@ import javax.annotation.Resource;
 public class DisposableWorkerIdAssigner implements WorkerIdAssigner {
     private static final Logger LOGGER = LoggerFactory.getLogger(DisposableWorkerIdAssigner.class);
 
-    @Resource
-    private WorkerNodeDAO workerNodeDAO;
+
 
     @Transactional
     public long assignWorkerId() {
         // build worker node entity
-        WorkerNodeEntity workerNodeEntity = buildWorkerNode();
+        WorkerNode workerNode = new WorkerNode();
 
         // add worker node for new (ignore the same IP + PORT)
         //workerNodeDAO.addWorkerNode(workerNodeEntity);
-        LOGGER.info("Add worker node:" + workerNodeEntity);
+        LOGGER.info("Add worker node:" + workerNode);
 
-        return workerNodeEntity.getId();
+        return workerNode.getId();
     }
 
-    private WorkerNodeEntity buildWorkerNode() {
-        WorkerNodeEntity workerNodeEntity = new WorkerNodeEntity();
-        if (DockerUtils.isDocker()) {
-            workerNodeEntity.setType(WorkerNodeType.CONTAINER.value());
-            workerNodeEntity.setHostName(DockerUtils.getDockerHost());
-            workerNodeEntity.setPort(DockerUtils.getDockerPort());
-
-        } else {
-            workerNodeEntity.setType(WorkerNodeType.ACTUAL.value());
-            workerNodeEntity.setHostName(NetUtils.getLocalAddress());
-            workerNodeEntity.setPort(System.currentTimeMillis() + "-" + RandomUtils.nextInt(100000));
-        }
-
-        return workerNodeEntity;
-    }
 
 }

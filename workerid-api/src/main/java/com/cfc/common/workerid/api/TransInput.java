@@ -19,11 +19,11 @@ import java.io.Serializable;
 public class TransInput<T> implements Serializable {
 
     /**
-     * 应用ID
+     * 应用名
      */
-    @ApiModelProperty(required = true, notes = "应用ID")
-    @NotBlank(message = "应用ID不能为空")
-    private String appId;
+    @ApiModelProperty(required = true, notes = "应用名")
+    @NotBlank(message = "应用名不能为空")
+    private String appName;
 
     /**
      * 具体请求参数
