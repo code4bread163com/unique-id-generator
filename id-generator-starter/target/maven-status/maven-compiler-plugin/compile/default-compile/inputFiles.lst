@@ -1,5 +1,5 @@
-/Users/admin/Documents/myprojects/unique-id-generator/id-generator-starter/src/main/java/com/cfc/common/uid/WorkerIdUtils.java
 /Users/admin/Documents/myprojects/unique-id-generator/id-generator-starter/src/main/java/com/cfc/common/uid/config/OkHttpConfiguration.java
 /Users/admin/Documents/myprojects/unique-id-generator/id-generator-starter/src/main/java/com/cfc/common/uid/config/OkHttpCli.java
+/Users/admin/Documents/myprojects/unique-id-generator/id-generator-starter/src/main/java/com/cfc/common/uid/core/WorkerIdAssigner.java
 /Users/admin/Documents/myprojects/unique-id-generator/id-generator-starter/src/main/java/com/cfc/common/uid/utils/DockerUtils.java
 /Users/admin/Documents/myprojects/unique-id-generator/id-generator-starter/src/main/java/com/cfc/common/uid/utils/NetUtils.java

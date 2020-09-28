@@ -29,7 +29,6 @@
         <logback.version>1.2.0</logback.version>
         <slf4j.version>1.7.30</slf4j.version>
         <unique-id-generator.version>1.0.0-SNAPSHOT</unique-id-generator.version>
-        <fastjson.version>1.2.56.sec06</fastjson.version>
         <jackson-databind.version>2.8.8</jackson-databind.version>
 
     </properties>
@@ -68,12 +67,6 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
         </dependency>
 
         <dependency>

@@ -14,15 +14,15 @@
     <dependencies>
 
 
-        <dependency>
-            <groupId>com.cfc.common</groupId>
-            <artifactId>workerid-api</artifactId>
-            <version>${unique-id-generator.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.cfc.common</groupId>-->
+<!--            <artifactId>workerid-api</artifactId>-->
+<!--            <version>${unique-id-generator.version}</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>com.cfc.common</groupId>
-            <artifactId>id-generator-common</artifactId>
+            <artifactId>id-generator-starter</artifactId>
             <version>${unique-id-generator.version}</version>
         </dependency>
     </dependencies>
