@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/api/workerId/")
 @Api(value = "获取workerId服务", tags = "获取workerId服务", produces = "JSON")
+@TransOutputAnnotation
 public class WorkerIdController {
 
     @Autowired
@@ -54,7 +55,7 @@ public class WorkerIdController {
             @RequestBody TransInput<GetWorkerIdRequest> request) {
 
         ValidatorUtil.validateBasicAndBusiParam(request);
-        return new TransOutput<GetWorkerIdResponse>(ErrorCodeEnum.SUCCESS.getCode(), ErrorCodeEnum.SUCCESS.getText(),
+        return new TransOutput<>(ErrorCodeEnum.SUCCESS.getCode(), ErrorCodeEnum.SUCCESS.getText(),
                 new GetWorkerIdResponse(workerIdService.getWorkerId(request)));
     }
 

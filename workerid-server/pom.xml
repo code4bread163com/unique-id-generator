@@ -13,7 +13,6 @@
 
     <properties>
         <aspect.version>1.8.13</aspect.version>
-
     </properties>
 
     <dependencies>
@@ -63,7 +62,6 @@
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>1.1.9</version>
         </dependency>
-
 
     </dependencies>
 
