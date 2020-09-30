@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>unique-id-generator</artifactId>
-        <groupId>com.cfc.common</groupId>
+        <groupId>com.cfc.uid.common</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -14,14 +14,14 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.cfc.common</groupId>
+            <groupId>com.cfc.uid.common</groupId>
             <artifactId>workerid-api</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
-            <groupId>com.cfc.common</groupId>
+            <groupId>com.cfc.uid.common</groupId>
             <artifactId>id-generator-common</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>

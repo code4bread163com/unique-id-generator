@@ -15,7 +15,7 @@
 
 
 <!--        <dependency>-->
-<!--            <groupId>com.cfc.common</groupId>-->
+<!--            <groupId>com.cfc.uid.common</groupId>-->
 <!--            <artifactId>workerid-api</artifactId>-->
 <!--            <version>${unique-id-generator.version}</version>-->
 <!--        </dependency>-->

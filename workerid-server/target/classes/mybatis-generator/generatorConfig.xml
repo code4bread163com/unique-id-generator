@@ -18,7 +18,7 @@
         <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/my_db" userId="root" password="root"  />
 
         <!--生成model配置-->
-        <javaModelGenerator targetPackage="com.cfc.common.workerid.server.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.cfc.workerid.server.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
@@ -29,7 +29,7 @@
         </sqlMapGenerator>
 
         <!--生成mapper.java配置，此配置会覆盖掉非自动生成的部分，所以在二次通过此配置生成时注意注释此项配置 by liuhai on 20170827-->
-        <javaClientGenerator targetPackage="com.cfc.common.workerid.server.dao" targetProject="src/main/java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="com.cfc.workerid.server.dao" targetProject="src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
