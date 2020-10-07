@@ -1,7 +1,7 @@
 package com.cfc.workerid.server.service;
 
 import com.cfc.uid.common.enums.ErrorCodeEnum;
-import com.cfc.uid.common.exception.BizException;
+import com.cfc.uid.common.exception.UidGenerateException;
 import com.cfc.workerid.api.GetWorkerIdRequest;
 import com.cfc.workerid.api.TransInput;
 import com.cfc.workerid.server.dao.WorkerNodeMapper;
@@ -38,22 +38,21 @@ public class WorkerIdService {
 
         if (workerNode.getId() == null) {
             log.error("数据库返回自增Id为空！appName：{}", request.getAppName());
-            throw new BizException(ErrorCodeEnum.GENERATE_UID_ERROR.getCode(), ErrorCodeEnum.GENERATE_UID_ERROR.getText());
+            throw new UidGenerateException(ErrorCodeEnum.GENERATE_UID_ERROR.getCode(), ErrorCodeEnum.GENERATE_UID_ERROR.getText());
         }
 
         if (workerNode.getId() > maxWorkerId.longValue()) {
             synchronized (WorkerIdService.class) {
                 Long maxId = workerNodeMapper.selectMaxId();
-                if (maxId >= maxWorkerId.longValue()) {
-                    int count = workerNodeMapper.clearWorkerId();
-                    log.info("Clear worker id, count:{}", count);
-
+                if (maxId != null && maxId >= maxWorkerId.longValue()) {
+                    int result = workerNodeMapper.clearWorkerId();
+                    log.info("Clear worker id, result:{}", result);
                 }
 
                 workerNodeMapper.insert(workerNode);
                 if (workerNode.getId() > maxWorkerId.longValue()) {
                     log.error("无法清空数据库中的worker id！appName：{}", request.getAppName());
-                    throw new BizException(ErrorCodeEnum.GENERATE_UID_ERROR.getCode(), ErrorCodeEnum.GENERATE_UID_ERROR.getText());
+                    throw new UidGenerateException(ErrorCodeEnum.GENERATE_UID_ERROR.getCode(), ErrorCodeEnum.GENERATE_UID_ERROR.getText());
                 }
             }
         }

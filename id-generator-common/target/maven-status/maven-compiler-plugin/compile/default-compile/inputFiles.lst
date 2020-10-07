@@ -1,3 +1,3 @@
-/Users/admin/Documents/myprojects/unique-id-generator/id-generator-common/src/main/java/com/cfc/common/idcommon/enums/ErrorCodeEnum.java
-/Users/admin/Documents/myprojects/unique-id-generator/id-generator-common/src/main/java/com/cfc/common/idcommon/exception/BizException.java
-/Users/admin/Documents/myprojects/unique-id-generator/id-generator-common/src/main/java/com/cfc/common/idcommon/utils/JacksonUtils.java
+/Users/admin/Documents/myprojects/unique-id-generator/id-generator-common/src/main/java/com/cfc/uid/common/utils/JacksonUtils.java
+/Users/admin/Documents/myprojects/unique-id-generator/id-generator-common/src/main/java/com/cfc/uid/common/exception/UidGenerateException.java
+/Users/admin/Documents/myprojects/unique-id-generator/id-generator-common/src/main/java/com/cfc/uid/common/enums/ErrorCodeEnum.java

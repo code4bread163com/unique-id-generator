@@ -1,7 +1,7 @@
 package com.cfc.workerid.server.aspect;
 
 import com.cfc.uid.common.enums.ErrorCodeEnum;
-import com.cfc.uid.common.exception.BizException;
+import com.cfc.uid.common.exception.UidGenerateException;
 import com.cfc.uid.common.utils.JacksonUtils;
 import com.cfc.workerid.api.TransOutput;
 import com.cfc.workerid.server.annotation.MonitorAnnotation;
@@ -48,7 +48,7 @@ public class MonitorAspect {
         try {
             responseArgs = proceedingJoinPoint.proceed(requestArgs);
             return responseArgs;
-        } catch (BizException e) {
+        } catch (UidGenerateException e) {
             log.error("请求处理失败，URL={}", url, e);
             return new TransOutput<>(e.getErrorCode(), e.getErrorMessage(), null);
         } catch (Exception e) {

@@ -1,7 +1,7 @@
 package com.cfc.workerid.server.utils;
 
 import com.cfc.uid.common.enums.ErrorCodeEnum;
-import com.cfc.uid.common.exception.BizException;
+import com.cfc.uid.common.exception.UidGenerateException;
 import com.cfc.workerid.api.TransInput;
 import org.springframework.util.CollectionUtils;
 
@@ -19,7 +19,7 @@ import java.util.Set;
  */
 public class ValidatorUtil {
     private ValidatorUtil() {
-        throw new BizException("工具类无需实例化");
+        throw new UidGenerateException("工具类无需实例化");
     }
 
     private static Validator validator;
@@ -72,7 +72,7 @@ public class ValidatorUtil {
             for (ConstraintViolation<T> error : set) {
                 validateError.append(String.format("%s ：[%s = %s] ;", error.getMessage(), error.getPropertyPath(), error.getInvalidValue()));
             }
-            throw new BizException(ErrorCodeEnum.INVALID_PARAM.getCode(), validateError.toString());
+            throw new UidGenerateException(ErrorCodeEnum.INVALID_PARAM.getCode(), validateError.toString());
         }
     }
 }

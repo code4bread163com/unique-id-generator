@@ -131,4 +131,8 @@
     select max(id)
     from WORKER_NODE
   </select>
+
+  <update id="clearWorkerId">
+    truncate table WORKER_NODE;
+  </update>
 </mapper>

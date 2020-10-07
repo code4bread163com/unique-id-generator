@@ -1,6 +1,4 @@
-/Users/admin/Documents/myprojects/unique-id-generator/workerid-server/src/main/java/com/cfc/workerid/server/utils/NetUtils.java
 /Users/admin/Documents/myprojects/unique-id-generator/workerid-server/src/main/java/com/cfc/workerid/server/annotation/MonitorAnnotation.java
-/Users/admin/Documents/myprojects/unique-id-generator/workerid-server/src/main/java/com/cfc/workerid/server/utils/DockerUtils.java
 /Users/admin/Documents/myprojects/unique-id-generator/workerid-server/src/main/java/com/cfc/workerid/server/advice/CommonExceptionAdvice.java
 /Users/admin/Documents/myprojects/unique-id-generator/workerid-server/src/main/java/com/cfc/workerid/server/model/WorkerNode.java
 /Users/admin/Documents/myprojects/unique-id-generator/workerid-server/src/main/java/com/cfc/workerid/server/dao/WorkerNodeMapper.java

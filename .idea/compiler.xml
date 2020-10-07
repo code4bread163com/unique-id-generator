@@ -7,11 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="id-generator-test" />
+        <module name="id-generator-starter" />
+        <module name="workerid-server" />
         <module name="workerid-api" />
         <module name="id-generator-common" />
-        <module name="workerid-server" />
-        <module name="id-generator-starter" />
-        <module name="id-generator-test" />
       </profile>
     </annotationProcessing>
   </component>

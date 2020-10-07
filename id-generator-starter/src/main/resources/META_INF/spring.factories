@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.cfc.uid.generate.core.WorkerIdAssigner,\
+com.cfc.uid.generate.core.DefaultUidGenerator

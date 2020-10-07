@@ -47,7 +47,7 @@ public class WorkerIdController {
      */
     @MonitorAnnotation
     @RequestMapping(value = "getWorkerId", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @ResponseBody
+//    @ResponseBody
     @ResponseStatus(value = HttpStatus.OK)
     @ApiOperation(value = "获取workerID", notes = "获取workerID", httpMethod = "POST")
     public TransOutput<GetWorkerIdResponse> getWorkerId(

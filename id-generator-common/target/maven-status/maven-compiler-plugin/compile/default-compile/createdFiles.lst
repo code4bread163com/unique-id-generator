@@ -1,3 +1,3 @@
-com/cfc/common/idcommon/enums/ErrorCodeEnum.class
-com/cfc/common/idcommon/exception/BizException.class
-com/cfc/common/idcommon/utils/JacksonUtils.class
+com/cfc/uid/common/enums/ErrorCodeEnum.class
+com/cfc/uid/common/exception/UidGenerateException.class
+com/cfc/uid/common/utils/JacksonUtils.class

@@ -12,7 +12,9 @@ public enum ErrorCodeEnum {
     INVALID_PARAM(200000, "入参不合法"),
     SERVICE_ERROR(300000, "服务失败"),
 
-    GENERATE_UID_ERROR(300001, "生成唯一Id失败");
+    INITIALIZED_WORKER_ID_ERROR(300001, "初始化workerId失败"),
+    GENERATE_UID_ERROR(300002, "生成唯一Id失败");
+
 
     private int code;
     private String text;

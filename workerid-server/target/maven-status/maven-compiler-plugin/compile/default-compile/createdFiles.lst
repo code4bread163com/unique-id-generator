@@ -1,11 +1,9 @@
 com/cfc/workerid/server/annotation/MonitorAnnotation.class
-com/cfc/workerid/server/utils/DockerUtils.class
 com/cfc/workerid/server/controller/WorkerIdController.class
 com/cfc/workerid/server/utils/ValidatorUtil.class
 com/cfc/workerid/server/dao/WorkerNodeMapper.class
 com/cfc/workerid/server/WorkerIdServerApplication.class
 com/cfc/workerid/server/aspect/MonitorAspect.class
-com/cfc/workerid/server/utils/NetUtils.class
 com/cfc/workerid/server/advice/CommonExceptionAdvice.class
 com/cfc/workerid/server/model/WorkerNode.class
 com/cfc/workerid/server/service/WorkerIdService.class

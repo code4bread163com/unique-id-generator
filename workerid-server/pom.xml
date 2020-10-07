@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>unique-id-generator</artifactId>
-        <groupId>com.cfc.uid.common</groupId>
+        <groupId>com.cfc.uid</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -17,13 +17,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.cfc.uid.common</groupId>
+            <groupId>com.cfc.uid</groupId>
             <artifactId>workerid-api</artifactId>
             <version>${unique-id-generator.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>com.cfc.uid.common</groupId>
+            <groupId>com.cfc.uid</groupId>
             <artifactId>id-generator-common</artifactId>
             <version>${unique-id-generator.version}</version>
         </dependency>
@@ -63,7 +63,28 @@
             <version>1.1.9</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Finchley.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
