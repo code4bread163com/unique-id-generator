@@ -57,9 +57,7 @@ public class DefaultUidGenerator implements UidGenerator, InitializingBean {
         log.info("Initialized id generator bits(1, {}, {}, {}) for workerID: {}", timeBits, workerBits, seqBits, workerId);
     }
 
-    public Long getWorkerId() {
-
-
+    private Long getWorkerId() {
         Long workerId = workerIdAssigner.getWorkerId();
         if (workerId > bitsAllocator.getMaxWorkerId()) {
             log.error("Initialized id generator failed, worker id {} exceeds the max {}", workerId, bitsAllocator.getMaxWorkerId());
@@ -211,13 +209,5 @@ public class DefaultUidGenerator implements UidGenerator, InitializingBean {
             this.epochStr = epochStr;
             this.epochSeconds = TimeUnit.MILLISECONDS.toSeconds(DateUtils.parseByDayPattern(epochStr).getTime());
         }
-    }
-
-    public WorkerIdAssigner getWorkerIdAssigner() {
-        return workerIdAssigner;
-    }
-
-    public void setWorkerIdAssigner(WorkerIdAssigner workerIdAssigner) {
-        this.workerIdAssigner = workerIdAssigner;
     }
 }
