@@ -5,17 +5,17 @@ package com.cfc.uid.generate.core;
  * @date 2020/9/25
  */
 
-import com.cfc.uid.generate.interfaces.WorkerIdService;
+import com.cfc.uid.generate.interfaces.WorkerIdInterface;
 import com.cfc.uid.generate.utils.NetUtils;
 import com.cfc.workerid.api.GetWorkerIdRequest;
 import com.cfc.workerid.api.GetWorkerIdResponse;
 import com.cfc.workerid.api.TransInput;
 import com.cfc.workerid.api.TransOutput;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
-@Component
+@Slf4j
 public class WorkerIdAssigner {
 
     @Value("${server.port:null}")
@@ -25,7 +25,11 @@ public class WorkerIdAssigner {
     private String name;
 
     @Autowired
-    private WorkerIdService workerIdService;
+    private WorkerIdInterface workerIdInterface;
+
+    public WorkerIdAssigner() {
+        log.info("Initialized WorkerIdAssigner");
+    }
 
     public Long getWorkerId() {
         TransInput<GetWorkerIdRequest> request = new TransInput<>();
@@ -39,7 +43,7 @@ public class WorkerIdAssigner {
 //        String message = okHttpCli.doPostJson("http://127.0.0.1:11112/api/workerId/getWorkerId",
 //                JacksonUtils.objectToJson(request));
 
-        TransOutput<GetWorkerIdResponse> response = workerIdService.getWorkerId(request);
+        TransOutput<GetWorkerIdResponse> response = workerIdInterface.getWorkerId(request);
 
 //        TransOutput<GetWorkerIdResponse> response = JacksonUtils.fromJsonToObject(message,
 //                new TypeReference<TransOutput<GetWorkerIdResponse>>() {
@@ -48,5 +52,13 @@ public class WorkerIdAssigner {
 //        System.out.println(message);
 
         return response.getData().getWorkerId();
+    }
+
+    public WorkerIdInterface getWorkerIdInterface() {
+        return workerIdInterface;
+    }
+
+    public void setWorkerIdInterface(WorkerIdInterface workerIdInterface) {
+        this.workerIdInterface = workerIdInterface;
     }
 }

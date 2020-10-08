@@ -3,5 +3,7 @@ com/cfc/uid/generate/utils/BitsAllocator.class
 com/cfc/uid/generate/utils/NetUtils.class
 com/cfc/uid/generate/core/DefaultUidGenerator.class
 com/cfc/uid/generate/utils/DateUtils.class
+com/cfc/uid/generate/config/UIDConfig.class
 com/cfc/uid/generate/interfaces/WorkerIdService.class
 com/cfc/uid/generate/core/UidGenerator.class
+com/cfc/uid/generate/core/UidGenService.class

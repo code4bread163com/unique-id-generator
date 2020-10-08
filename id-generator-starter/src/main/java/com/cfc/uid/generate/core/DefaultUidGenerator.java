@@ -8,12 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-@Component
 @Slf4j
 public class DefaultUidGenerator implements UidGenerator, InitializingBean {
     /**
@@ -48,6 +46,8 @@ public class DefaultUidGenerator implements UidGenerator, InitializingBean {
 
     @Override
     public void afterPropertiesSet() {
+        log.info("Initialized DefaultUidGenerator");
+
         // initialize bits allocator
         bitsAllocator = new BitsAllocator(timeBits, workerBits, seqBits);
 
@@ -209,5 +209,13 @@ public class DefaultUidGenerator implements UidGenerator, InitializingBean {
             this.epochStr = epochStr;
             this.epochSeconds = TimeUnit.MILLISECONDS.toSeconds(DateUtils.parseByDayPattern(epochStr).getTime());
         }
+    }
+
+    public WorkerIdAssigner getWorkerIdAssigner() {
+        return workerIdAssigner;
+    }
+
+    public void setWorkerIdAssigner(WorkerIdAssigner workerIdAssigner) {
+        this.workerIdAssigner = workerIdAssigner;
     }
 }
