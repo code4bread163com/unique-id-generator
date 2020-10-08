@@ -9,45 +9,36 @@ import feign.Feign;
 import feign.codec.Decoder;
 import feign.codec.Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.openfeign.FeignClientsConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Primary;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 //@ImportResource(locations = { "classpath:config/cached-uid-spring.xml" })
-@Import(FeignClientsConfiguration.class)
+//@Import(FeignClientsConfiguration.class)
 public class UIDConfig {
 
-    @Autowired
-    WorkerIdInterface workerIdInterface;
-
-
     @Bean
-    public WorkerIdInterface workerIdService(Decoder decoder, Encoder encoder, Contract contract) {
-
-
-        return Feign.builder()
-                .encoder(encoder)
-                .decoder(decoder)
-                .contract(contract).target(WorkerIdInterface.class, "http://" + serviceId);
-
-
-//        return Feign.builder().contract(contract).encoder(encoder).decoder(decoder).target(WorkerIdService.class, "http://localhost:8004");
+    public RestTemplate restTemplate() {
+        HttpComponentsClientHttpRequestFactory httpComponentsClientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
+        httpComponentsClientHttpRequestFactory.setReadTimeout(25000);
+        httpComponentsClientHttpRequestFactory.setConnectTimeout(5000);
+        return new RestTemplate(httpComponentsClientHttpRequestFactory);
     }
 
     @Bean
     public WorkerIdAssigner workerIdAssigner() {
-        WorkerIdAssigner workerIdAssigner = new WorkerIdAssigner();
-//        workerIdAssigner.setWorkerIdService(workerIdService);
-        return workerIdAssigner;
+        return new WorkerIdAssigner();
     }
 
     @Bean
     public DefaultUidGenerator defaultUidGenerator() {
-        DefaultUidGenerator defaultUidGenerator = new DefaultUidGenerator();
-//        defaultUidGenerator.setWorkerIdAssigner(workerIdAssigner());
-        return defaultUidGenerator;
+        return new DefaultUidGenerator();
     }
 
     @Bean

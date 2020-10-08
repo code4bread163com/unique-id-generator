@@ -57,7 +57,9 @@ public class DefaultUidGenerator implements UidGenerator, InitializingBean {
         log.info("Initialized id generator bits(1, {}, {}, {}) for workerID: {}", timeBits, workerBits, seqBits, workerId);
     }
 
-    private Long getWorkerId() {
+    public Long getWorkerId() {
+
+
         Long workerId = workerIdAssigner.getWorkerId();
         if (workerId > bitsAllocator.getMaxWorkerId()) {
             log.error("Initialized id generator failed, worker id {} exceeds the max {}", workerId, bitsAllocator.getMaxWorkerId());

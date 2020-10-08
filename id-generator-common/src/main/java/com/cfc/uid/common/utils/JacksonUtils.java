@@ -1,7 +1,3 @@
-/**
- * Copyright(c) 2013-2013 by Puhuifinance Inc.
- * All Rights Reserved
- */
 package com.cfc.uid.common.utils;
 
 import com.fasterxml.jackson.core.JsonParseException;
