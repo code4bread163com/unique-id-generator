@@ -20,6 +20,6 @@ public class SampleController {
     @ResponseBody
     String home() {
         long id = uidGenService.getUid();
-        return "Hello World!";
+        return String.valueOf(id);
     }
 }
