@@ -1,20 +1,19 @@
 package com.cfc.uid.common.utils;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.fasterxml.jackson.databind.type.ArrayType;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-
-import java.io.IOException;
+import org.apache.commons.lang.StringUtils;
 
 /**
  * JSON 工具类
+ *
+ * @author zhangliang
+ * @date 2020/9/23
  */
 @Slf4j
 public class JacksonUtils {
@@ -27,11 +26,8 @@ public class JacksonUtils {
     static {
         mapper = new ObjectMapper();
         SimpleFilterProvider filters = new SimpleFilterProvider();
-        //找不到对象上@JsonFilter指定的filter时，不要抛异常！比如TransOutput对象
         filters.setFailOnUnknownId(false);
-        mapper.setFilters(filters);
-
-        //add by liuhai on 2018/04/25:反序列化时发现不认识的字段进行忽略
+        mapper.setFilterProvider(filters);
     }
 
     /**
@@ -39,13 +35,12 @@ public class JacksonUtils {
      *
      * @param object
      * @return
-     * @author linchunqiu
      */
     public static String objectToJson(Object object) {
         try {
             return mapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            log.error("objectToJson exception: {}", e.getMessage(), e);
+            log.error("ObjectToJson exception: {}", e.getMessage(), e);
         }
         return null;
     }
@@ -55,13 +50,13 @@ public class JacksonUtils {
             ArrayType arrayType = mapper.getTypeFactory().constructArrayType(tClass);
             return mapper.readValue(stringListJson, arrayType);
         } catch (Exception e) {
-            log.error("objectToJson exception: {}", e.getMessage(), e);
+            log.error("ObjectToJson exception: {}", e.getMessage(), e);
         }
         return null;
     }
 
     /**
-     * jackjson把json字符串转换为Java对象的实现方法
+     * json字符串转换为Java对象
      * 默认忽略不识别的字段
      *
      * @param json      json字符串
@@ -73,7 +68,7 @@ public class JacksonUtils {
     }
 
     /**
-     * jackjson把json字符串转换为Java对象的实现方法
+     * json字符串转换为Java对象
      *
      * @param json                    json字符串
      * @param valueType               转换对象的类型
@@ -82,30 +77,23 @@ public class JacksonUtils {
      */
     public static <T> T fromJsonToObject(String json, Class<T> valueType, boolean ignoreUnknownProperties) {
         if (StringUtils.isEmpty(json)) {
-            log.error("参数为null");
+            log.error("ObjectToJson error, parameter is empty");
             return null;
         }
+
         //设置是否忽略不识别的字段
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, !ignoreUnknownProperties);
         try {
             return mapper.readValue(json, valueType);
-        } catch (JsonParseException e) {
-            log.error("JsonParseException: {}", e.getMessage(), e);
-        } catch (JsonMappingException e) {
-            log.error("JsonMappingException: {}", e.getMessage(), e);
-        } catch (IOException e) {
-            log.error("IOException: {}", e.getMessage(), e);
+        } catch (Exception e) {
+            log.error("ObjectToJson exception: {}", e.getMessage(), e);
         }
+
         return null;
     }
 
     /**
-     * jackjson把json字符串转换为Java对象的实现方法
-     * <p>
-     * <pre>
-     * return JackJson.fromJsonToObject(this.answersJson, new TypeReference&lt;List&lt;StanzaAnswer&gt;&gt;() {
-     * });
-     * </pre>
+     * json字符串转换为Java对象
      *
      * @param <T>           转换为的java对象
      * @param json          json字符串
@@ -114,18 +102,16 @@ public class JacksonUtils {
      */
     public static <T> T fromJsonToObject(String json, TypeReference<T> typeReference) {
         if (StringUtils.isEmpty(json)) {
-            log.error("参数为null");
+            log.error("ObjectToJson error, parameter is empty");
             return null;
         }
+
         try {
             return mapper.readValue(json, typeReference);
-        } catch (JsonParseException e) {
-            log.error("JsonParseException: {}", e.getMessage(), e);
-        } catch (JsonMappingException e) {
-            log.error("JsonMappingException: {}", e.getMessage(), e);
-        } catch (IOException e) {
-            log.error("IOException: {}", e.getMessage(), e);
+        } catch (Exception e) {
+            log.error("ObjectToJson exception: {}", e.getMessage(), e);
         }
+
         return null;
     }
 

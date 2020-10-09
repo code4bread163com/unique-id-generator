@@ -1,9 +1,5 @@
 package com.cfc.uid.generate.core;
 
-/**
- * @author zhangliang
- * @date 2020/9/25
- */
 import com.cfc.uid.common.enums.ErrorCodeEnum;
 import com.cfc.uid.common.exception.UidGenerateException;
 import com.cfc.uid.common.utils.JacksonUtils;
@@ -23,6 +19,12 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+/**
+ * workerID生成器，调用远程服务
+ *
+ * @author zhangliang
+ * @date 2020/9/25
+ */
 @Slf4j
 public class WorkerIdAssigner {
 
@@ -45,43 +47,75 @@ public class WorkerIdAssigner {
         log.info("Initialized WorkerIdAssigner");
     }
 
+    /**
+     * 获取 workerId
+     *
+     * @return
+     */
     public Long getWorkerId() {
         List<ServiceInstance> instances = client.getInstances(WORKER_SERVER_INSTANCE_ID);
 
         if (instances == null || instances.isEmpty()) {
-            throw new UidGenerateException("Get worker id from worker server failed! Eureka service " + WORKER_SERVER_INSTANCE_ID + " do not exist！");
+            throw new UidGenerateException("Get worker id from worker server failed! Eureka provider " + WORKER_SERVER_INSTANCE_ID + " do not exist！");
         }
 
-        TransInput<GetWorkerIdRequest> request = new TransInput<>();
-        request.setAppName(name);
-
-        GetWorkerIdRequest getWorkerIdRequest = new GetWorkerIdRequest();
-        String ip = NetUtils.getLocalAddress();
-        getWorkerIdRequest.setIp(ip);
-        getWorkerIdRequest.setPort(port);
-        request.setData(getWorkerIdRequest);
-
-        String message = null;
+        TransOutput<GetWorkerIdResponse> response = null;
         for (ServiceInstance instance : instances) {
             try {
-                ResponseEntity<String> responseEntity = restTemplate.postForEntity(instance.getUri().toString() + GET_WORKER_ID_URL,
-                        request, String.class);
-                message = responseEntity.getBody();
-                log.info("Get worker id from worker server, appName: {}, ip: {}, response: {}", name, ip, message);
+                response = getWorkerId(instance.getUri().toString());
+                checkResponse(response);
                 break;
             } catch (Exception ex) {
                 log.error("Get worker id from worker server failed!", ex);
             }
         }
 
-        TransOutput<GetWorkerIdResponse> response = JacksonUtils.fromJsonToObject(message,
+        checkResponse(response);
+        return response.getData().getWorkerId();
+    }
+
+    /**
+     * 创建请求
+     *
+     * @return
+     */
+    private TransInput<GetWorkerIdRequest> createRequest() {
+        TransInput<GetWorkerIdRequest> request = new TransInput<>();
+        request.setAppName(name);
+
+        GetWorkerIdRequest getWorkerIdRequest = new GetWorkerIdRequest();
+        getWorkerIdRequest.setIp(NetUtils.getLocalAddress());
+        getWorkerIdRequest.setPort(port);
+        request.setData(getWorkerIdRequest);
+
+        return request;
+    }
+
+    /**
+     * 远程获取 workerId
+     *
+     * @param uri
+     * @return
+     */
+    private TransOutput<GetWorkerIdResponse> getWorkerId(String uri) {
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity(uri + GET_WORKER_ID_URL,
+                createRequest(), String.class);
+        String message = responseEntity.getBody();
+        log.info("Get worker id from worker server, response: {}", message);
+
+        return JacksonUtils.fromJsonToObject(message,
                 new TypeReference<TransOutput<GetWorkerIdResponse>>() {
                 });
+    }
 
+    /**
+     * check response
+     *
+     * @param response
+     */
+    private void checkResponse(TransOutput<GetWorkerIdResponse> response) {
         if (response == null || response.getData() == null || response.getTransCode() != ErrorCodeEnum.SUCCESS.getCode()) {
             throw new UidGenerateException("Get worker id from worker server failed!");
         }
-
-        return response.getData().getWorkerId();
     }
 }

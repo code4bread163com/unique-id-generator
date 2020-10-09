@@ -2,6 +2,10 @@ package com.cfc.uid.generate.core;
 
 import com.cfc.uid.common.exception.UidGenerateException;
 
+/**
+ * @author zhangliang
+ * @date 2020/9/25
+ */
 public interface UidGenerator {
 
     /**

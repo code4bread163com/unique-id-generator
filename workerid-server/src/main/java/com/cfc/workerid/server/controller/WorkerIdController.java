@@ -47,7 +47,6 @@ public class WorkerIdController {
      */
     @MonitorAnnotation
     @RequestMapping(value = "getWorkerId", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-//    @ResponseBody
     @ResponseStatus(value = HttpStatus.OK)
     @ApiOperation(value = "获取workerID", notes = "获取workerID", httpMethod = "POST")
     public TransOutput<GetWorkerIdResponse> getWorkerId(
@@ -59,11 +58,4 @@ public class WorkerIdController {
                 new GetWorkerIdResponse(workerIdService.getWorkerId(request)));
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
-    @ResponseBody
-    @ResponseStatus(value = HttpStatus.OK)
-    public String getWorkerId1() {
-
-        return "succ";
-    }
 }

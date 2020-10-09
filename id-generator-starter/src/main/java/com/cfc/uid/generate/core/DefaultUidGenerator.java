@@ -12,6 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * ID生成器
+ *
+ * @author zhangliang
+ * @date 2020/9/25
+ */
 @Slf4j
 public class DefaultUidGenerator implements UidGenerator, InitializingBean {
     /**
@@ -113,12 +119,10 @@ public class DefaultUidGenerator implements UidGenerator, InitializingBean {
             log.error("Clock moved backwards, current seconds: {}, last seconds: {}",
                     currentSecond, lastSecond);
 
-            long backwardsSeconds = lastSecond - currentSecond;
-            if (backwardsSeconds <= MAX_CLOCK_BACKWARDS_SECONDS) {
+            if ((lastSecond - currentSecond) <= MAX_CLOCK_BACKWARDS_SECONDS) {
                 currentSecond = retry(currentSecond, lastSecond);
-
             } else {
-                log.info("Clock moved backwards, reacquire workerId:{}", workerId);
+                log.info("Clock moved backwards, reacquire workerId, current workerId: {}", workerId);
                 workerId = getWorkerId();
 
                 sequence = 0L;
@@ -133,9 +137,8 @@ public class DefaultUidGenerator implements UidGenerator, InitializingBean {
             if (sequence == 0) {
                 currentSecond = getNextSecond(lastSecond);
             }
-
-            // At the different second, sequence restart from zero
         } else {
+            // At the different second, sequence restart from zero
             sequence = 0L;
         }
 
@@ -150,7 +153,7 @@ public class DefaultUidGenerator implements UidGenerator, InitializingBean {
         do {
             Thread.sleep(500);
             currentSecond = getCurrentSecond();
-            log.error("Clock moved backwards, retry, current seconds: {}, last seconds: {}",
+            log.info("Clock moved backwards, retry, current seconds: {}, last seconds: {}",
                     currentSecond, lastSecond);
 
             if (currentSecond < temp) {

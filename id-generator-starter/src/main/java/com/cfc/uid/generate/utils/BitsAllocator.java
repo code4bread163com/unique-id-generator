@@ -5,10 +5,8 @@ import org.apache.commons.lang.builder.ToStringStyle;
 import org.springframework.util.Assert;
 
 /**
- * Allocate 64 bits for the UID(long)<br>
- * sign (fixed 1bit) -> deltaSecond -> workerId -> sequence(within the same second)
- * 
- * @author yutianbao
+ * @author zhangliang
+ * @date 2020/9/25
  */
 public class BitsAllocator {
     /**

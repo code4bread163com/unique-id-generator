@@ -7,12 +7,6 @@
 
     <context id="context" defaultModelType="flat" targetRuntime="MyBatis3">
         <property name="javaFileEncoding" value="UTF-8" />
-<!--        <plugin type="com.finup.mybatisgenerator.SelectByEntityPlugin">-->
-<!--        </plugin>-->
-
-<!--        <commentGenerator type="com.finup.mybatisgenerator.AccountCommentGenerator">-->
-<!--            <property name="commentEncoding" value="UTF-8" />-->
-<!--        </commentGenerator>-->
 
         <!-- 连接数据库配置 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/my_db" userId="root" password="root"  />

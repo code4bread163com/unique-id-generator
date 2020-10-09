@@ -7,9 +7,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * DateUtils provides date formatting, parsing
- *
- * @author yutianbao
+ * @author zhangliang
+ * @date 2020/9/25
  */
 public abstract class DateUtils extends org.apache.commons.lang.time.DateUtils {
     /**

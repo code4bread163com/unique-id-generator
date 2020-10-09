@@ -30,6 +30,8 @@
         <slf4j.version>1.7.30</slf4j.version>
         <unique-id-generator.version>1.0.0-SNAPSHOT</unique-id-generator.version>
         <jackson-databind.version>2.8.8</jackson-databind.version>
+        <swagger.version>2.8.0</swagger.version>
+        <spring-cloud.version>Finchley.SR1</spring-cloud.version>
 
     </properties>
 
@@ -76,37 +78,52 @@
         </dependency>
 
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.8.0</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>2.8.0</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson-databind.version}</version>
         </dependency>
     </dependencies>
 
-
     <dependencyManagement>
+        <dependencies>
 
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
     </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+    <!--    <distributionManagement>-->
+    <!--        <snapshotRepository>-->
+    <!--            <id>snapshots</id>-->
+    <!--            <url>http://</url>-->
+    <!--        </snapshotRepository>-->
+    <!--        <repository>-->
+    <!--            <id>releases</id>-->
+    <!--            <url>http://</url>-->
+    <!--        </repository>-->
+    <!--    </distributionManagement>-->
+
+    <repositories>
+    </repositories>
+    <pluginRepositories>
+    </pluginRepositories>
 </project>
