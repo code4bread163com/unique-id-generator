@@ -19,7 +19,16 @@ public class SampleController {
     @RequestMapping("/")
     @ResponseBody
     String home() {
+        long start = System.currentTimeMillis();
         long id = uidGenService.getUid();
+        System.out.println(id + ", time:" + (System.currentTimeMillis() - start));
+
+        start = System.currentTimeMillis();
+        for (int i = 0; i < 10000; i++) {
+            uidGenService.getUid();
+        }
+        System.out.println("time:" + (System.currentTimeMillis() - start));
+
         return String.valueOf(id);
     }
 }

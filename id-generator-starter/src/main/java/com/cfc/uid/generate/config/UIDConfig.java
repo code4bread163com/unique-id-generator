@@ -1,5 +1,6 @@
 package com.cfc.uid.generate.config;
 
+import com.cfc.uid.generate.core.CachedUidGenerator;
 import com.cfc.uid.generate.core.DefaultUidGenerator;
 import com.cfc.uid.generate.core.UidGenService;
 import com.cfc.uid.generate.core.WorkerIdAssigner;
@@ -18,7 +19,7 @@ public class UIDConfig {
     @Bean
     public RestTemplate restTemplate() {
         HttpComponentsClientHttpRequestFactory httpComponentsClientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
-        httpComponentsClientHttpRequestFactory.setReadTimeout(25000);
+        httpComponentsClientHttpRequestFactory.setReadTimeout(250000);
         httpComponentsClientHttpRequestFactory.setConnectTimeout(5000);
         return new RestTemplate(httpComponentsClientHttpRequestFactory);
     }
@@ -28,9 +29,13 @@ public class UIDConfig {
         return new WorkerIdAssigner();
     }
 
-    @Bean
     public DefaultUidGenerator defaultUidGenerator() {
         return new DefaultUidGenerator();
+    }
+
+    @Bean
+    public CachedUidGenerator cachedUidGenerator() {
+        return new CachedUidGenerator();
     }
 
     @Bean

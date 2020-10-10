@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 /**
  * ID生成服务
+ *
  * @author zhangliang
  * @date 2020/9/25
  */
