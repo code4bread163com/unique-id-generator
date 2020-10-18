@@ -1,8 +1,6 @@
-package com.cfc.uid.generate.core;
+package com.cfc.uid.gen.core;
 
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 /**
  * ID生成服务
@@ -13,10 +11,17 @@ import javax.annotation.Resource;
 @Service
 public class UidGenService {
 
-    @Resource
     private UidGenerator uidGenerator;
 
     public long getUid() {
         return uidGenerator.getUID();
+    }
+
+    public UidGenerator getUidGenerator() {
+        return uidGenerator;
+    }
+
+    public void setUidGenerator(UidGenerator uidGenerator) {
+        this.uidGenerator = uidGenerator;
     }
 }

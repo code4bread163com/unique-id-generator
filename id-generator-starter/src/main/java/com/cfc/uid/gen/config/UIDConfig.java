@@ -1,9 +1,10 @@
-package com.cfc.uid.generate.config;
+package com.cfc.uid.gen.config;
 
-import com.cfc.uid.generate.core.CachedUidGenerator;
-import com.cfc.uid.generate.core.DefaultUidGenerator;
-import com.cfc.uid.generate.core.UidGenService;
-import com.cfc.uid.generate.core.WorkerIdAssigner;
+import com.cfc.uid.gen.core.CachedUidGenerator;
+import com.cfc.uid.gen.core.DefaultUidGenerator;
+import com.cfc.uid.gen.core.UidGenService;
+import com.cfc.uid.gen.core.WorkerIdAssigner;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -15,6 +16,9 @@ import org.springframework.web.client.RestTemplate;
  */
 @Configuration
 public class UIDConfig {
+
+    @Value("${uid.generate.use-buffer:true}")
+    private Boolean useBuffer;
 
     @Bean
     public RestTemplate restTemplate() {
@@ -29,17 +33,20 @@ public class UIDConfig {
         return new WorkerIdAssigner();
     }
 
+    @Bean
     public DefaultUidGenerator defaultUidGenerator() {
-        return new DefaultUidGenerator();
+        return !useBuffer ? new DefaultUidGenerator() : null;
     }
 
     @Bean
     public CachedUidGenerator cachedUidGenerator() {
-        return new CachedUidGenerator();
+        return useBuffer ? new CachedUidGenerator() : null;
     }
 
     @Bean
     public UidGenService uidGenService() {
-        return new UidGenService();
+        UidGenService uidGenService = new UidGenService();
+        uidGenService.setUidGenerator(useBuffer ? cachedUidGenerator() : defaultUidGenerator());
+        return uidGenService;
     }
 }

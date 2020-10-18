@@ -1,6 +1,6 @@
-package com.cfc.uid.generate.buffer;
+package com.cfc.uid.gen.buffer;
 
-import com.cfc.uid.generate.utils.PaddedAtomicLong;
+import com.cfc.uid.gen.utils.PaddedAtomicLong;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;

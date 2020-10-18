@@ -1,6 +1,6 @@
 package com.cfc.uid.test.controller;
 
-import com.cfc.uid.generate.core.UidGenService;
+import com.cfc.uid.gen.core.UidGenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,11 +23,11 @@ public class SampleController {
         long id = uidGenService.getUid();
         System.out.println(id + ", time:" + (System.currentTimeMillis() - start));
 
-        start = System.currentTimeMillis();
-        for (int i = 0; i < 10000; i++) {
-            uidGenService.getUid();
-        }
-        System.out.println("time:" + (System.currentTimeMillis() - start));
+//        start = System.currentTimeMillis();
+//        for (int i = 0; i < 10000; i++) {
+//            uidGenService.getUid();
+//        }
+//        System.out.println("time:" + (System.currentTimeMillis() - start));
 
         return String.valueOf(id);
     }

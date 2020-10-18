@@ -1,9 +1,9 @@
-package com.cfc.uid.generate.core;
+package com.cfc.uid.gen.core;
 
 import com.cfc.uid.common.enums.ErrorCodeEnum;
 import com.cfc.uid.common.exception.UidGenerateException;
-import com.cfc.uid.generate.utils.BitsAllocator;
-import com.cfc.uid.generate.utils.DateUtils;
+import com.cfc.uid.gen.utils.BitsAllocator;
+import com.cfc.uid.gen.utils.DateUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.InitializingBean;

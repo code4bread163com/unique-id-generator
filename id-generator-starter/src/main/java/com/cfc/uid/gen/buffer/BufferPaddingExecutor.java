@@ -1,7 +1,7 @@
-package com.cfc.uid.generate.buffer;
+package com.cfc.uid.gen.buffer;
 
-import com.cfc.uid.generate.utils.NamingThreadFactory;
-import com.cfc.uid.generate.utils.PaddedAtomicLong;
+import com.cfc.uid.gen.utils.NamingThreadFactory;
+import com.cfc.uid.gen.utils.PaddedAtomicLong;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.Assert;
 

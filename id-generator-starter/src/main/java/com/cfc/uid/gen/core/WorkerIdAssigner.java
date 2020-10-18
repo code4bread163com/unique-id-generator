@@ -1,9 +1,9 @@
-package com.cfc.uid.generate.core;
+package com.cfc.uid.gen.core;
 
 import com.cfc.uid.common.enums.ErrorCodeEnum;
 import com.cfc.uid.common.exception.UidGenerateException;
 import com.cfc.uid.common.utils.JacksonUtils;
-import com.cfc.uid.generate.utils.NetUtils;
+import com.cfc.uid.gen.utils.NetUtils;
 import com.cfc.workerid.api.GetWorkerIdRequest;
 import com.cfc.workerid.api.GetWorkerIdResponse;
 import com.cfc.workerid.api.TransInput;

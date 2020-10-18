@@ -1,4 +1,4 @@
-package com.cfc.uid.generate.utils;
+package com.cfc.uid.gen.utils;
 
 import org.apache.commons.lang.time.DateFormatUtils;
 

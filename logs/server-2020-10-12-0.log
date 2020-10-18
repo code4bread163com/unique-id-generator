@@ -1,0 +1,255 @@
+[INFO ] 11:08:40.136 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$b040f9d2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 11:08:50.280 [main] c.c.w.s.WorkerIdServerApplication - The following profiles are active: dev
+[INFO ] 11:08:51.318 [main] o.s.cloud.context.scope.GenericScope - BeanFactory id=41cb23e2-bccf-35b2-8f9f-8db573f98c1c
+[INFO ] 11:08:51.458 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9426f6d5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 11:08:51.582 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$b040f9d2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 11:08:51.946 [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 11112 (http)
+[INFO ] 11:08:51.963 [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-11112"]
+[INFO ] 11:08:51.970 [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 11:08:51.970 [main] o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+[INFO ] 11:08:51.978 [main] o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/admin/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+[INFO ] 11:08:52.229 [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 11:08:52.229 [main] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1930 ms
+[INFO ] 11:08:52.288 [main] o.s.b.w.s.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+[INFO ] 11:08:52.289 [main] o.s.b.w.s.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+[INFO ] 11:08:52.294 [main] o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO ] 11:08:52.295 [main] o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO ] 11:08:52.295 [main] o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+[INFO ] 11:08:52.295 [main] o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO ] 11:08:52.295 [main] o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+[INFO ] 11:08:52.370 [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+[WARN ] 11:08:52.512 [main] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'workerIdController': Unsatisfied dependency expressed through field 'workerIdService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'workerIdService': Unsatisfied dependency expressed through field 'workerNodeMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'workerNodeMapper' defined in file [/Users/admin/Documents/myprojects/unique-id-generator/workerid-server/target/classes/com/cfc/workerid/server/dao/WorkerNodeMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Unsatisfied dependency expressed through method 'sqlSessionFactory' parameter 0; nested exception is org.springframework.boot.context.properties.ConfigurationPropertiesBindException: Error creating bean with name 'dataSource': Could not bind properties to 'DruidDataSourceWrapper' : prefix=spring.datasource.druid, ignoreInvalidFields=false, ignoreUnknownFields=true; nested exception is org.springframework.boot.context.properties.bind.BindException: Failed to bind properties under 'spring.datasource.druid.exception-sorter' to com.alibaba.druid.pool.ExceptionSorter
+[INFO ] 11:08:52.512 [main] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+[INFO ] 11:08:52.535 [main] o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[ERROR] 11:08:52.539 [main] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'spring.datasource.druid.exception-sorter' to com.alibaba.druid.pool.ExceptionSorter:
+
+    Property: spring.datasource.druid.exception-sorter
+    Value: true
+    Origin: class path resource [application-dev.properties]:31:42
+    Reason: No converter found capable of converting from type [java.lang.String] to type [com.alibaba.druid.pool.ExceptionSorter]
+
+Action:
+
+Update your application's configuration
+
+[INFO ] 11:13:05.711 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$94592550] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 11:13:15.843 [main] c.c.w.s.WorkerIdServerApplication - The following profiles are active: dev
+[INFO ] 11:13:16.785 [main] o.s.cloud.context.scope.GenericScope - BeanFactory id=41cb23e2-bccf-35b2-8f9f-8db573f98c1c
+[INFO ] 11:13:16.894 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$783f2253] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 11:13:16.990 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$94592550] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 11:13:17.303 [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 11112 (http)
+[INFO ] 11:13:17.317 [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-11112"]
+[INFO ] 11:13:17.323 [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 11:13:17.324 [main] o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+[INFO ] 11:13:17.331 [main] o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/admin/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+[INFO ] 11:13:17.563 [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 11:13:17.563 [main] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1703 ms
+[INFO ] 11:13:17.617 [main] o.s.b.w.s.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+[INFO ] 11:13:17.619 [main] o.s.b.w.s.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+[INFO ] 11:13:17.623 [main] o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO ] 11:13:17.623 [main] o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO ] 11:13:17.623 [main] o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+[INFO ] 11:13:17.623 [main] o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO ] 11:13:17.624 [main] o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+[INFO ] 11:13:17.692 [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+[ERROR] 11:13:17.829 [main] c.a.d.pool.DruidAbstractDataSource - load exceptionSorter error : true
+[INFO ] 11:13:18.118 [main] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+[INFO ] 11:13:18.757 [main] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+[WARN ] 11:13:18.773 [main] c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+[INFO ] 11:13:18.773 [main] c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+[WARN ] 11:13:18.778 [main] c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+[INFO ] 11:13:18.778 [main] c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+[INFO ] 11:13:18.978 [main] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 11:13:19.590 [main] o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+[INFO ] 11:13:19.630 [main] c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+[INFO ] 11:13:19.857 [main] c.n.d.p.DiscoveryJerseyProvider - Using JSON encoding codec LegacyJacksonJson
+[INFO ] 11:13:19.857 [main] c.n.d.p.DiscoveryJerseyProvider - Using JSON decoding codec LegacyJacksonJson
+[INFO ] 11:13:20.001 [main] c.n.d.p.DiscoveryJerseyProvider - Using XML encoding codec XStreamXml
+[INFO ] 11:13:20.001 [main] c.n.d.p.DiscoveryJerseyProvider - Using XML decoding codec XStreamXml
+[INFO ] 11:13:20.238 [main] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 11:13:20.259 [main] c.netflix.discovery.DiscoveryClient - Disable delta property : false
+[INFO ] 11:13:20.259 [main] c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+[INFO ] 11:13:20.259 [main] c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+[INFO ] 11:13:20.259 [main] c.netflix.discovery.DiscoveryClient - Application is null : false
+[INFO ] 11:13:20.260 [main] c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+[INFO ] 11:13:20.260 [main] c.netflix.discovery.DiscoveryClient - Application version is -1: true
+[INFO ] 11:13:20.260 [main] c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+[INFO ] 11:13:20.531 [main] c.netflix.discovery.DiscoveryClient - The response status is 200
+[INFO ] 11:13:20.533 [main] c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+[INFO ] 11:13:20.536 [main] c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+[INFO ] 11:13:20.540 [main] c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1602472400539 with initial instances count: 2
+[INFO ] 11:13:20.543 [main] o.s.c.n.e.s.EurekaServiceRegistry - Registering application workerid-server with eureka with status UP
+[INFO ] 11:13:20.544 [main] c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1602472400544, current=UP, previous=STARTING]
+[INFO ] 11:13:20.546 [DiscoveryClient-InstanceInfoReplicator-0] c.netflix.discovery.DiscoveryClient - DiscoveryClient_WORKERID-SERVER/192.168.31.72:11112: registering service...
+[INFO ] 11:13:20.551 [main] s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[INFO ] 11:13:20.575 [main] s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[INFO ] 11:13:20.600 [DiscoveryClient-InstanceInfoReplicator-0] c.netflix.discovery.DiscoveryClient - DiscoveryClient_WORKERID-SERVER/192.168.31.72:11112 - registration status: 204
+[INFO ] 11:13:20.622 [main] s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[INFO ] 11:13:20.813 [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-11112"]
+[INFO ] 11:13:20.838 [main] o.a.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+[INFO ] 11:13:20.862 [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 11112 (http) with context path ''
+[INFO ] 11:13:20.866 [main] c.c.w.s.WorkerIdServerApplication - Started WorkerIdServerApplication in 25.828 seconds (JVM running for 31.686)
+[INFO ] 11:15:21.537 [http-nio-11112-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 11:15:21.537 [http-nio-11112-exec-4] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 11:15:21.551 [http-nio-11112-exec-4] o.s.web.servlet.DispatcherServlet - Completed initialization in 14 ms
+[INFO ] 11:18:20.252 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 11:23:20.242 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 11:28:20.231 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 11:33:20.225 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 11:38:20.220 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 11:43:20.213 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 11:48:20.208 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 11:53:20.196 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 11:58:20.189 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 12:03:20.183 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 12:08:20.174 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 12:13:20.168 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 12:18:20.163 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 12:23:20.157 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 12:28:20.151 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 12:33:20.145 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 12:38:20.137 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 12:43:20.139 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 12:48:20.132 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 12:53:20.128 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 12:58:20.127 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 13:03:20.118 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 13:08:20.109 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 13:13:20.101 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 13:18:20.099 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 13:23:20.096 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 13:28:20.087 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 13:33:20.084 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 13:38:20.078 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 13:43:20.071 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 13:48:20.065 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 13:53:20.056 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 13:58:20.049 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 14:03:20.040 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 14:08:20.039 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 14:13:20.032 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 14:18:20.024 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 14:23:20.017 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 14:23:33.193 [Thread-58] o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application workerid-server with eureka with status DOWN
+[WARN ] 14:23:33.193 [Thread-58] c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1602483813193, current=DOWN, previous=UP]
+[INFO ] 14:23:33.194 [DiscoveryClient-InstanceInfoReplicator-0] c.netflix.discovery.DiscoveryClient - DiscoveryClient_WORKERID-SERVER/192.168.31.72:11112: registering service...
+[INFO ] 14:23:33.197 [Thread-58] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 14:23:33.200 [DiscoveryClient-InstanceInfoReplicator-0] c.netflix.discovery.DiscoveryClient - DiscoveryClient_WORKERID-SERVER/192.168.31.72:11112 - registration status: 204
+[INFO ] 14:23:33.210 [Thread-58] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+[INFO ] 14:23:33.210 [Thread-58] c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+[WARN ] 14:23:33.215 [Thread-58] o.s.c.a.CommonAnnotationBeanPostProcessor - Destroy method on bean with name 'scopedTarget.eurekaClient' threw an exception: org.springframework.beans.factory.BeanCreationNotAllowedException: Error creating bean with name 'eurekaInstanceConfigBean': Singleton bean creation not allowed while singletons of this factory are in destruction (Do not request a bean from a BeanFactory in a destroy method implementation!)
+[INFO ] 14:24:10.195 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$b02b428b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 14:24:20.338 [main] c.c.w.s.WorkerIdServerApplication - The following profiles are active: dev
+[INFO ] 14:24:21.368 [main] o.s.cloud.context.scope.GenericScope - BeanFactory id=41cb23e2-bccf-35b2-8f9f-8db573f98c1c
+[INFO ] 14:24:21.491 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$94113f8e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 14:24:21.603 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$b02b428b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 14:24:21.962 [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 11112 (http)
+[INFO ] 14:24:21.975 [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-11112"]
+[INFO ] 14:24:21.982 [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 14:24:21.982 [main] o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+[INFO ] 14:24:21.990 [main] o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/admin/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+[INFO ] 14:24:22.253 [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 14:24:22.253 [main] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1894 ms
+[INFO ] 14:24:22.318 [main] o.s.b.w.s.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+[INFO ] 14:24:22.319 [main] o.s.b.w.s.ServletRegistrationBean - Servlet statViewServlet mapped to [/druid/*]
+[INFO ] 14:24:22.327 [main] o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO ] 14:24:22.327 [main] o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO ] 14:24:22.327 [main] o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+[INFO ] 14:24:22.327 [main] o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO ] 14:24:22.327 [main] o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'webStatFilter' to urls: [/*]
+[INFO ] 14:24:22.404 [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+[ERROR] 14:24:22.612 [main] c.a.d.pool.DruidAbstractDataSource - load exceptionSorter error : true
+[INFO ] 14:24:22.909 [main] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+[INFO ] 14:24:23.608 [main] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+[WARN ] 14:24:23.622 [main] c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+[INFO ] 14:24:23.622 [main] c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+[WARN ] 14:24:23.627 [main] c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+[INFO ] 14:24:23.627 [main] c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+[INFO ] 14:24:23.834 [main] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 14:24:24.484 [main] o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+[INFO ] 14:24:24.522 [main] c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+[INFO ] 14:24:24.780 [main] c.n.d.p.DiscoveryJerseyProvider - Using JSON encoding codec LegacyJacksonJson
+[INFO ] 14:24:24.780 [main] c.n.d.p.DiscoveryJerseyProvider - Using JSON decoding codec LegacyJacksonJson
+[INFO ] 14:24:24.917 [main] c.n.d.p.DiscoveryJerseyProvider - Using XML encoding codec XStreamXml
+[INFO ] 14:24:24.918 [main] c.n.d.p.DiscoveryJerseyProvider - Using XML decoding codec XStreamXml
+[INFO ] 14:24:25.206 [main] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 14:24:25.227 [main] c.netflix.discovery.DiscoveryClient - Disable delta property : false
+[INFO ] 14:24:25.227 [main] c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+[INFO ] 14:24:25.227 [main] c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+[INFO ] 14:24:25.227 [main] c.netflix.discovery.DiscoveryClient - Application is null : false
+[INFO ] 14:24:25.227 [main] c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+[INFO ] 14:24:25.227 [main] c.netflix.discovery.DiscoveryClient - Application version is -1: true
+[INFO ] 14:24:25.227 [main] c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+[INFO ] 14:24:25.420 [main] c.netflix.discovery.DiscoveryClient - The response status is 200
+[INFO ] 14:24:25.423 [main] c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+[INFO ] 14:24:25.425 [main] c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+[INFO ] 14:24:25.429 [main] c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1602483865428 with initial instances count: 3
+[INFO ] 14:24:25.434 [main] o.s.c.n.e.s.EurekaServiceRegistry - Registering application workerid-server with eureka with status UP
+[INFO ] 14:24:25.434 [main] c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1602483865434, current=UP, previous=STARTING]
+[INFO ] 14:24:25.438 [DiscoveryClient-InstanceInfoReplicator-0] c.netflix.discovery.DiscoveryClient - DiscoveryClient_WORKERID-SERVER/192.168.31.72:11112: registering service...
+[INFO ] 14:24:25.443 [main] s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[INFO ] 14:24:25.470 [main] s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[INFO ] 14:24:25.489 [DiscoveryClient-InstanceInfoReplicator-0] c.netflix.discovery.DiscoveryClient - DiscoveryClient_WORKERID-SERVER/192.168.31.72:11112 - registration status: 204
+[INFO ] 14:24:25.520 [main] s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[INFO ] 14:24:25.710 [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-11112"]
+[INFO ] 14:24:25.734 [main] o.a.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+[INFO ] 14:24:25.757 [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 11112 (http) with context path ''
+[INFO ] 14:24:25.763 [main] c.c.w.s.WorkerIdServerApplication - Started WorkerIdServerApplication in 26.372 seconds (JVM running for 32.515)
+[INFO ] 14:29:25.222 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 14:34:25.215 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 14:39:25.210 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 14:44:25.204 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 14:48:00.548 [http-nio-11112-exec-8] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 14:48:00.549 [http-nio-11112-exec-8] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 14:48:00.565 [http-nio-11112-exec-8] o.s.web.servlet.DispatcherServlet - Completed initialization in 16 ms
+[INFO ] 14:49:25.199 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 14:54:25.193 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 14:59:25.188 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 15:04:25.184 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 15:09:25.179 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 15:14:25.171 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 15:19:25.165 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 15:24:25.158 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 15:29:25.156 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 15:34:25.152 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 15:39:25.148 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 15:44:25.144 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 15:49:25.142 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 15:54:25.139 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 15:59:25.139 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 16:04:25.134 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 16:09:25.128 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 16:14:25.127 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 16:19:25.126 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 16:24:25.126 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 16:29:25.124 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 16:34:25.121 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 16:39:25.121 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 16:44:25.122 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 16:49:25.125 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 16:54:25.118 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 16:59:25.110 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 17:04:25.102 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 17:09:25.100 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 17:14:25.095 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 17:19:25.089 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 17:24:25.083 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 17:29:25.078 [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+[INFO ] 17:33:03.909 [Thread-59] o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application workerid-server with eureka with status DOWN
+[WARN ] 17:33:03.909 [Thread-59] c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1602495183909, current=DOWN, previous=UP]
+[INFO ] 17:33:03.910 [DiscoveryClient-InstanceInfoReplicator-0] c.netflix.discovery.DiscoveryClient - DiscoveryClient_WORKERID-SERVER/192.168.31.72:11112: registering service...
+[INFO ] 17:33:03.912 [Thread-59] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 17:33:03.915 [DiscoveryClient-InstanceInfoReplicator-0] c.netflix.discovery.DiscoveryClient - DiscoveryClient_WORKERID-SERVER/192.168.31.72:11112 - registration status: 204
+[INFO ] 17:33:03.925 [Thread-59] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+[INFO ] 17:33:03.925 [Thread-59] c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+[WARN ] 17:33:03.930 [Thread-59] o.s.c.a.CommonAnnotationBeanPostProcessor - Destroy method on bean with name 'scopedTarget.eurekaClient' threw an exception: org.springframework.beans.factory.BeanCreationNotAllowedException: Error creating bean with name 'eurekaInstanceConfigBean': Singleton bean creation not allowed while singletons of this factory are in destruction (Do not request a bean from a BeanFactory in a destroy method implementation!)

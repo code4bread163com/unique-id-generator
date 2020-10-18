@@ -1,10 +1,10 @@
-package com.cfc.uid.generate.core;
+package com.cfc.uid.gen.core;
 
 import com.cfc.uid.common.exception.UidGenerateException;
-import com.cfc.uid.generate.buffer.BufferPaddingExecutor;
-import com.cfc.uid.generate.buffer.RejectedPutBufferHandler;
-import com.cfc.uid.generate.buffer.RejectedTakeBufferHandler;
-import com.cfc.uid.generate.buffer.RingBuffer;
+import com.cfc.uid.gen.buffer.BufferPaddingExecutor;
+import com.cfc.uid.gen.buffer.RejectedPutBufferHandler;
+import com.cfc.uid.gen.buffer.RejectedTakeBufferHandler;
+import com.cfc.uid.gen.buffer.RingBuffer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.util.Assert;

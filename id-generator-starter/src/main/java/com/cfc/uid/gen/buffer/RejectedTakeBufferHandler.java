@@ -1,4 +1,4 @@
-package com.cfc.uid.generate.buffer;
+package com.cfc.uid.gen.buffer;
 
 /**
  * @author zhangliang

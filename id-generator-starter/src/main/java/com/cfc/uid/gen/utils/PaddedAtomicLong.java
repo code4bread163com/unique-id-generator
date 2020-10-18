@@ -1,4 +1,4 @@
-package com.cfc.uid.generate.utils;
+package com.cfc.uid.gen.utils;
 
 import java.util.concurrent.atomic.AtomicLong;
 

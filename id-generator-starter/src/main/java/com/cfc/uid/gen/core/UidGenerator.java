@@ -1,4 +1,4 @@
-package com.cfc.uid.generate.core;
+package com.cfc.uid.gen.core;
 
 import com.cfc.uid.common.exception.UidGenerateException;
 

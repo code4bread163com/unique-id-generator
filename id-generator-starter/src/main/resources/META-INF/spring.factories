@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.cfc.uid.generate.config.UIDConfig
+  com.cfc.uid.gen.config.UIDConfig
