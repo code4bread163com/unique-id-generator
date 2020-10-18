@@ -1,3 +1,0 @@
-com/cfc/uid/common/enums/ErrorCodeEnum.class
-com/cfc/uid/common/exception/UidGenerateException.class
-com/cfc/uid/common/utils/JacksonUtils.class
