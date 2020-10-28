@@ -124,12 +124,13 @@
                 </includes>
                 <excludes>
                     <exclude>**/config/**</exclude>
+                    <exclude>**/mybatis-generator/**</exclude>
                 </excludes>
                 <filtering>false</filtering>
             </resource>
 
             <resource>
-                <directory>src/main/resources/config/${package.environment}}</directory>
+                <directory>src/main/resources/config/${package.environment}</directory>
                 <includes>
                     <include>**/*.*</include>
                 </includes>
