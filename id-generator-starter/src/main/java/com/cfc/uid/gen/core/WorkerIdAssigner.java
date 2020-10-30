@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
@@ -38,7 +38,7 @@ public class WorkerIdAssigner {
     private RestTemplate restTemplate;
 
     @Autowired
-    private DiscoveryClient client;
+    private LoadBalancerClient loadBalancerClient;
 
     private static final String WORKER_SERVER_INSTANCE_ID = "workerid-server";
     private static final String GET_WORKER_ID_URL = "/api/workerId/getWorkerId";
@@ -53,21 +53,20 @@ public class WorkerIdAssigner {
      * @return
      */
     public Long getWorkerId() {
-        List<ServiceInstance> instances = client.getInstances(WORKER_SERVER_INSTANCE_ID);
-
-        if (instances == null || instances.isEmpty()) {
+        ServiceInstance serviceInstance = loadBalancerClient.choose(WORKER_SERVER_INSTANCE_ID);
+        if (serviceInstance == null) {
             throw new UidGenerateException("Get worker id from worker server failed! Eureka provider " + WORKER_SERVER_INSTANCE_ID + " do not exist！");
         }
 
-        TransOutput<GetWorkerIdResponse> response = null;
-        for (ServiceInstance instance : instances) {
-            try {
-                response = getWorkerId(instance.getUri().toString());
-                checkResponse(response);
-                break;
-            } catch (Exception ex) {
-                log.error("Get worker id from worker server failed!", ex);
-            }
+        String url = String.format("http://%s:%s", serviceInstance.getHost(), serviceInstance.getPort());
+        log.info("Get workerId server url: " + url);
+
+        TransOutput<GetWorkerIdResponse> response;
+        try {
+            response = getWorkerId(url);
+            checkResponse(response);
+        } catch (Exception ex) {
+            throw new UidGenerateException("Get worker id from worker server failed! errorMsg:" + ex.toString(), ex);
         }
 
         checkResponse(response);
@@ -91,6 +90,8 @@ public class WorkerIdAssigner {
         return request;
     }
 
+    private static final String GET_WORKER_ID_URL1 = "http://workerid-server/api/workerId/getWorkerId";
+
     /**
      * 远程获取 workerId
      *
@@ -98,6 +99,36 @@ public class WorkerIdAssigner {
      * @return
      */
     private TransOutput<GetWorkerIdResponse> getWorkerId(String uri) {
+
+//        ResponseEntity<String> responseEntity1 = restTemplate.postForEntity(GET_WORKER_ID_URL1, createRequest(), String.class);
+//        String message1 = responseEntity1.getBody();
+//
+//        log.info("Get worker id from worker server, appName: {}, response: {}", name,  message1);
+//
+//        TransOutput<GetWorkerIdResponse> response1 = JacksonUtils.fromJsonToObject(message1,
+//                new TypeReference<TransOutput<GetWorkerIdResponse>>() {
+//                });
+//
+//        if (response1 == null || response1.getData() == null || response1.getTransCode() != ErrorCodeEnum.SUCCESS.getCode()) {
+//            throw new UidGenerateException("Get worker id from worker server failed!");
+//        }
+//       ResponseEntity<String> responseEntity1 = restTemplate.postForEntity(GET_WORKER_ID_URL1, createRequest(), String.class);
+////        String message1 = responseEntity1.getBody();
+////
+////        log.info("Get worker id from worker server, appName: {}, response: {}", name,  message1);
+////
+////        TransOutput<GetWorkerIdResponse> response1 = JacksonUtils.fromJsonToObject(message1,
+////                new TypeReference<TransOutput<GetWorkerIdResponse>>() {
+////                });
+////
+////        if (response1 == null || response1.getData() == null || response1.getTransCode() != ErrorCodeEnum.SUCCESS.getCode()) {
+////            throw new UidGenerateException("Get worker id from worker server failed!");
+////        }
+////
+////
+//
+
+
         ResponseEntity<String> responseEntity = restTemplate.postForEntity(uri + GET_WORKER_ID_URL,
                 createRequest(), String.class);
         String message = responseEntity.getBody();
@@ -106,6 +137,8 @@ public class WorkerIdAssigner {
         return JacksonUtils.fromJsonToObject(message,
                 new TypeReference<TransOutput<GetWorkerIdResponse>>() {
                 });
+
+
     }
 
     /**
