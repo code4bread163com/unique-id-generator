@@ -40,6 +40,10 @@ public class CachedUidGenerator extends DefaultUidGenerator implements Disposabl
 
     @Override
     public void afterPropertiesSet() {
+        if (workerIdAssigner == null) {
+            return;
+        }
+
         // initialize workerId & bitsAllocator
         super.afterPropertiesSet();
 
@@ -95,7 +99,7 @@ public class CachedUidGenerator extends DefaultUidGenerator implements Disposabl
         // initialize RingBuffer
         int bufferSize = ((int) bitsAllocator.getMaxSequence() + 1) << boostPower;
         this.ringBuffer = new RingBuffer(bufferSize, paddingFactor);
-        log.info("Initialized ring buffer size:{}, paddingFactor:{}", bufferSize, paddingFactor);
+        log.info("Initialized ring buffer size:{}, paddingFactor:{}%", bufferSize, paddingFactor);
 
         // initialize RingBufferPaddingExecutor
         boolean usingSchedule = (scheduleInterval != null);

@@ -47,11 +47,14 @@ public class DefaultUidGenerator implements UidGenerator, InitializingBean {
 
     protected static final long MAX_CLOCK_BACKWARDS_SECONDS = 3L;
 
-    @Autowired
     protected WorkerIdAssigner workerIdAssigner;
 
     @Override
     public void afterPropertiesSet() {
+        if (workerIdAssigner == null) {
+            return;
+        }
+
         log.info("Initialized DefaultUidGenerator");
 
         // initialize bits allocator
@@ -212,5 +215,13 @@ public class DefaultUidGenerator implements UidGenerator, InitializingBean {
             this.epochStr = epochStr;
             this.epochSeconds = TimeUnit.MILLISECONDS.toSeconds(DateUtils.parseByDayPattern(epochStr).getTime());
         }
+    }
+
+    public WorkerIdAssigner getWorkerIdAssigner() {
+        return workerIdAssigner;
+    }
+
+    public void setWorkerIdAssigner(WorkerIdAssigner workerIdAssigner) {
+        this.workerIdAssigner = workerIdAssigner;
     }
 }

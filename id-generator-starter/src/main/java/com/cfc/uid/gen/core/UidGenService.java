@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
  * @author zhangliang
  * @date 2020/9/25
  */
-@Service
+
 public class UidGenService {
 
     private UidGenerator uidGenerator;

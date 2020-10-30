@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+    <bean id="httpComponentsClientHttpRequestFactory"
+          class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
+        <property name="readTimeout" value="250000"/>
+        <property name="connectTimeout" value="5000"/>
+    </bean>
+
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+        <constructor-arg ref="httpComponentsClientHttpRequestFactory"/>
+    </bean>
+
+    <bean id="workerIdAssigner" class="com.cfc.uid.gen.core.WorkerIdAssigner"/>
+
+    <bean id="defaultUidGenerator" class="com.cfc.uid.gen.core.DefaultUidGenerator">
+        <property name="workerIdAssigner" value="#{'${uid.generate.use-buffer:true}' ? null : workerIdAssigner}"/>
+    </bean>
+
+	<bean id="cachedUidGenerator" class="com.cfc.uid.gen.core.CachedUidGenerator">
+		<property name="workerIdAssigner" value="#{'${uid.generate.use-buffer:true}' ? workerIdAssigner : null}"/>
+	</bean>
+
+	<bean id="uidGenService" class="com.cfc.uid.gen.core.UidGenService">
+		<property name="uidGenerator" value="#{'${uid.generate.use-buffer:true}' ? cachedUidGenerator : defaultUidGenerator}"/>
+	</bean>
+
+</beans>
